@@ -9,6 +9,8 @@ namespace FileIO
 {
     class Program
     {
+        public const string PATH = "C:\\Users\\soham\\source\\repos\\FileIO\\FileIO\\Example.txt";
+        public const string COPYPATH = @"C:\Users\soham\source\repos\FileIO\FileIO\xyz.txt";
         static void Main(string[] args)
         {
             //FileExists();
@@ -21,42 +23,35 @@ namespace FileIO
         }
         public static void FileExists()
         {
-            string path = "C:\\Users\\soham\\source\\repos\\FileIO\\FileIO\\Example.txt";
-            if (File.Exists(path))
+            if (File.Exists(PATH))
                 Console.WriteLine("File exists");
             else
                 Console.WriteLine("File doesn't exists");
         }
         public static void ReadAllLines()
         {
-            string path = "C:\\Users\\soham\\source\\repos\\FileIO\\FileIO\\Example.txt";
             string[] lines;
-            lines = File.ReadAllLines(path);
+            lines = File.ReadAllLines(PATH);
             Console.WriteLine(lines[0]);
             Console.WriteLine(lines[1]);
         }
         public static void ReadAllText()
         {
-            string path = "C:\\Users\\soham\\source\\repos\\FileIO\\FileIO\\Example.txt";
             string lines;
-            lines = File.ReadAllText(path);
+            lines = File.ReadAllText(PATH);
             Console.WriteLine(lines);
         }
         public static void FileCopy()
         {
-            string path = "C:\\Users\\soham\\source\\repos\\FileIO\\FileIO\\Example.txt";
-            string copypath = @"C:\Users\soham\source\repos\FileIO\FileIO\xyz.txt";
-            File.Copy(path, copypath);
+            File.Copy(PATH, COPYPATH);
         }
         public static void DeleteFile()
         {
-            string path = "C:\\Users\\soham\\source\\repos\\FileIO\\FileIO\\xyz.txt";
-            File.Delete(path);
+            File.Delete(PATH);
         }
         public static void ReadFromStreamReader()
         {
-            string path = "C:\\Users\\soham\\source\\repos\\FileIO\\FileIO\\Example.txt";
-            using (StreamReader sr=File.OpenText(path))
+            using (StreamReader sr=File.OpenText(PATH))
             {
                 string s = "C:\\Users\\soham\\source\\repos\\FileIO\\FileIO\\Example.txt";
                 while((s=sr.ReadLine())!=null)
@@ -67,14 +62,12 @@ namespace FileIO
         }
         public static void WriteUsingStreamWriter()
         {
-            string path = "C:\\Users\\soham\\source\\repos\\FileIO\\FileIO\\Example.txt";
-            using (StreamWriter sr = File.AppendText(path))
+            using (StreamWriter sr = File.AppendText(PATH))
             {
                 sr.WriteLine("Hello World .Net is Awesome");
                 sr.Close();
-                Console.WriteLine(File.ReadAllText(path));
+                Console.WriteLine(File.ReadAllText(PATH));
             }
         }
     }
-    
 }

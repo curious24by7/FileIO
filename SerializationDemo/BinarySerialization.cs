@@ -13,7 +13,7 @@ namespace SerializationDemo
         public void Serialization()
         {
             Demo sample = new Demo();
-            FileStream fileStream = new FileStream(@"\Example.txt", FileMode.Create);
+            FileStream fileStream = new FileStream(@"C:\Users\soham\source\repos\FileIO\SerializationDemo\Example.txt", FileMode.Create);
             BinaryFormatter formatter = new BinaryFormatter();
             formatter.Serialize(fileStream, sample);
             Console.ReadKey();
@@ -26,6 +26,5 @@ namespace SerializationDemo
         public string ApplicationName { get; set; } = "Binary Serialize";
         public int ApplicationId { get; set; } = 1001;
     }
-
 
 }
