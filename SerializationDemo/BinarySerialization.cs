@@ -10,10 +10,11 @@ namespace SerializationDemo
 {
     class BinarySerialization
     {
+        public const string PATH = @"C:\Users\soham\source\repos\FileIO\SerializationDemo\Example.txt";
         public void Serialization()
         {
             Demo sample = new Demo();
-            FileStream fileStream = new FileStream(@"C:\Users\soham\source\repos\FileIO\SerializationDemo\Example.txt", FileMode.Create);
+            FileStream fileStream = new FileStream(PATH, FileMode.Create);
             BinaryFormatter formatter = new BinaryFormatter();
             formatter.Serialize(fileStream, sample);
             Console.ReadKey();

@@ -10,9 +10,10 @@ namespace SerializationDemo
 {
     class BinaryDeSerialization
     {
+        public const string PATH = @"C:\Users\soham\source\repos\FileIO\SerializationDemo\Example.txt";
         public void DeSerialization()
         {
-            FileStream fileStream = new FileStream(@"C:\Users\soham\source\repos\FileIO\SerializationDemo\Example.txt", FileMode.Open);
+            FileStream fileStream = new FileStream(PATH, FileMode.Open);
             BinaryFormatter formatter = new BinaryFormatter();
             Demo deserializationdemo = (Demo)formatter.Deserialize(fileStream);
             Console.WriteLine($"Application name {deserializationdemo.ApplicationName} ---ApplicationId    {deserializationdemo.ApplicationId}");
