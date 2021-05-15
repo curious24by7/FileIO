@@ -30,44 +30,78 @@ namespace FileIO
         }
         public static void ReadAllLines()
         {
-            string[] lines;
-            lines = File.ReadAllLines(PATH);
-            Console.WriteLine(lines[0]);
-            Console.WriteLine(lines[1]);
+            if (File.Exists(PATH))
+            {
+                string[] lines;
+                lines = File.ReadAllLines(PATH);
+                Console.WriteLine(lines[0]);
+                Console.WriteLine(lines[1]);
+            }
+            else
+                Console.WriteLine("File doesn't exists");
         }
         public static void ReadAllText()
         {
-            string lines;
-            lines = File.ReadAllText(PATH);
-            Console.WriteLine(lines);
+            if (File.Exists(PATH))
+            {
+                string lines;
+                lines = File.ReadAllText(PATH);
+                Console.WriteLine(lines);
+            }
+            else
+                Console.WriteLine("File doesn't exists");
+           
         }
         public static void FileCopy()
         {
-            File.Copy(PATH, COPYPATH);
+            if (File.Exists(PATH))
+            {
+                File.Copy(PATH, COPYPATH);
+            }
+            else
+                Console.WriteLine("File doesn't exists");
         }
         public static void DeleteFile()
         {
-            File.Delete(PATH);
+            if (File.Exists(PATH))
+            {
+                File.Delete(PATH);
+                Console.WriteLine("File Deleted Successfully");
+            }
+            else
+                Console.WriteLine("File doesn't exists");
+          
         }
         public static void ReadFromStreamReader()
         {
-            using (StreamReader sr=File.OpenText(PATH))
+            if (File.Exists(PATH))
             {
-                string s = "C:\\Users\\soham\\source\\repos\\FileIO\\FileIO\\Example.txt";
-                while((s=sr.ReadLine())!=null)
+                using (StreamReader sr = File.OpenText(PATH))
                 {
-                    Console.WriteLine(s);
+                    string s = "C:\\Users\\soham\\source\\repos\\FileIO\\FileIO\\Example.txt";
+                    while ((s = sr.ReadLine()) != null)
+                    {
+                        Console.WriteLine(s);
+                    }
                 }
             }
+            else
+                Console.WriteLine("File doesn't exists");
+            
         }
         public static void WriteUsingStreamWriter()
         {
-            using (StreamWriter sr = File.AppendText(PATH))
+            if (File.Exists(PATH))
             {
-                sr.WriteLine("Hello World .Net is Awesome");
-                sr.Close();
-                Console.WriteLine(File.ReadAllText(PATH));
+                using (StreamWriter sr = File.AppendText(PATH))
+                {
+                    sr.WriteLine("Hello World .Net is Awesome");
+                    sr.Close();
+                    Console.WriteLine(File.ReadAllText(PATH));
+                }
             }
+            else
+                Console.WriteLine("File doesn't exists");
         }
     }
 }
